@@ -1,5 +1,9 @@
 output "vpc_id" {
-    value = data.aws_vpc.selected.id
+  value = data.aws_vpc.selected.id
+}
+
+output "cidr_block" {
+  value = data.aws_vpc.selected.cidr_block
 }
 
 output "public_subnets" {

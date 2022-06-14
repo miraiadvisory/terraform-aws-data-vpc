@@ -26,12 +26,12 @@ data "aws_subnets" "public" {
 
 data "aws_subnet" "public" {
   for_each = toset(data.aws_subnets.public.ids)
-  id       = each.key
+  id       = each.value
 }
 
 data "aws_subnet" "private" {
   for_each = toset(data.aws_subnets.private.ids)
-  id       = each.key
+  id       = each.value
 }
 
 

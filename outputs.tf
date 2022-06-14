@@ -7,9 +7,9 @@ output "cidr_block" {
 }
 
 output "public_subnets" {
-  value = data.aws_subnet.public.*.id
+  value = [for s in data.aws_subnet.public : s.id] 
 }
 
 output "private_subnets" {
-  value = data.aws_subnet.private.*.id
+  value = [for s in data.aws_subnet.private : s.id]
 }

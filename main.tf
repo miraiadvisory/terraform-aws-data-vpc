@@ -25,13 +25,13 @@ data "aws_subnets" "public" {
 }
 
 data "aws_subnet" "public" {
-  count = length(data.aws_subnets.public.ids)
-  id    = tolist(data.aws_subnets.public.ids)[count.index]
+  for_each = toset(data.aws_subnets.public.ids)
+  id       = each.key
 }
 
 data "aws_subnet" "private" {
-  count = length(data.aws_subnets.private.ids)
-  id    = tolist(data.aws_subnets.private.ids)[count.index]
+  for_each = toset(data.aws_subnets.private.ids)
+  id       = each.key
 }
 
 
